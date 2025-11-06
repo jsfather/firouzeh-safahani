@@ -13,7 +13,8 @@ module.exports = {
         inter: ["Inter", "sans-serif"],
       },
       backgroundImage: {
-        "linear-to-br": "linear-gradient(to bottom right, var(--tw-gradient-stops))",
+        "linear-to-br":
+          "linear-gradient(to bottom right, var(--tw-gradient-stops))",
         "linear-to-r": "linear-gradient(to right, var(--tw-gradient-stops))",
       },
       colors: {
