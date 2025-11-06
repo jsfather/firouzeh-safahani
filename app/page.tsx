@@ -393,10 +393,7 @@ export default function Home() {
                 {/* Credentials */}
                 <div className="bg-rose-50 rounded-xl p-6 space-y-4 mt-8">
                   <div className="flex items-start gap-3">
-                    <Award
-                      className="text-rose-600 mt-1 shrink-0"
-                      size={24}
-                    />
+                    <Award className="text-rose-600 mt-1 shrink-0" size={24} />
                     <div>
                       <h3 className="font-bold text-gray-800 mb-1">
                         مدرک فنی حرفه‌ای
