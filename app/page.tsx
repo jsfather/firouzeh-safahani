@@ -1,9 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Instagram, Sparkles, Award, Heart, Star } from "lucide-react";
+import {
+  Instagram,
+  Sparkles,
+  Award,
+  Heart,
+  Star,
+  GraduationCap,
+} from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const services = [
     {
       name: "مانیکور و پدیکور",
@@ -27,44 +38,41 @@ export default function Home() {
     },
   ];
 
-  const portfolio = [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80",
-      alt: "طراحی ناخن گل‌دار",
-    },
-    {
-      id: 2,
-      image:
-        "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&q=80",
-      alt: "ناخن فرنچ مدرن",
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80",
-      alt: "ناخن هنری خلاقانه",
-    },
-    {
-      id: 4,
-      image:
-        "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80",
-      alt: "مانیکور کلاسیک",
-    },
-    {
-      id: 5,
-      image:
-        "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&q=80",
-      alt: "ناخن گلیتر شاین",
-    },
-    {
-      id: 6,
-      image:
-        "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&q=80",
-      alt: "طراحی ناخن مینیمال",
-    },
+  // Your actual nail art images
+  const nailImages = [
+    "photo_1_2025-11-07_00-13-14.jpg",
+    "photo_2_2025-11-07_00-13-14.jpg",
+    "photo_3_2025-11-07_00-13-14.jpg",
+    "photo_4_2025-11-07_00-13-14.jpg",
+    "photo_5_2025-11-07_00-13-14.jpg",
+    "photo_6_2025-11-07_00-13-14.jpg",
+    "photo_7_2025-11-07_00-13-14.jpg",
+    "photo_8_2025-11-07_00-13-14.jpg",
+    "photo_9_2025-11-07_00-13-14.jpg",
+    "photo_10_2025-11-07_00-13-14.jpg",
+    "photo_11_2025-11-07_00-13-14.jpg",
+    "photo_12_2025-11-07_00-13-14.jpg",
+    "photo_13_2025-11-07_00-13-14.jpg",
+    "photo_14_2025-11-07_00-13-14.jpg",
+    "photo_15_2025-11-07_00-13-14.jpg",
+    "photo_16_2025-11-07_00-13-14.jpg",
+    "photo_17_2025-11-07_00-13-14.jpg",
+    "photo_18_2025-11-07_00-13-14.jpg",
+    "photo_19_2025-11-07_00-13-14.jpg",
+    "photo_20_2025-11-07_00-13-14.jpg",
+    "photo_21_2025-11-07_00-13-14.jpg",
+    "photo_22_2025-11-07_00-13-14.jpg",
+    "photo_1_2025-11-07_00-13-50.jpg",
+    "photo_2_2025-11-07_00-13-50.jpg",
+    "photo_3_2025-11-07_00-13-50.jpg",
+    "photo_4_2025-11-07_00-13-50.jpg",
   ];
+
+  const portfolio = nailImages.map((image, index) => ({
+    id: index + 1,
+    image: `/nails/${image}`,
+    alt: `نمونه کار طراحی ناخن ${index + 1}`,
+  }));
 
   return (
     <div
@@ -194,40 +202,38 @@ export default function Home() {
               نمونه کارهای من
             </h2>
             <p className="text-xl text-gray-600 font-inter">
-              برخی از آثار هنری اخیر ناخن من را کاوش کنید
+              مجموعه‌ای از طراحی‌های زیبا و خلاقانه ناخن
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Image Gallery Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {portfolio.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, rotate: 2 }}
                 className="relative group cursor-pointer"
+                onClick={() => setSelectedImage(item.image)}
               >
-                <div className="aspect-square rounded-2xl shadow-xl overflow-hidden bg-gray-200">
-                  <img
+                <div className="relative aspect-square rounded-xl overflow-hidden bg-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <Image
                     src={item.image}
                     alt={item.alt}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
                     <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
                       whileHover={{ opacity: 1, scale: 1 }}
-                      className="text-white text-lg font-inter font-semibold bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full"
+                      className="text-white text-sm font-inter font-semibold bg-rose-500/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      مشاهده جزئیات
+                      مشاهده
                     </motion.div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <div className="font-playfair text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                      {item.alt}
-                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -243,9 +249,54 @@ export default function Home() {
             <p className="text-gray-600 font-inter mb-4">
               🌟 نمونه کارهای بیشتر را در اینستاگرام ببینید
             </p>
+            <motion.a
+              href="https://instagram.com/Firouzeh_pedicure_nail"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 font-semibold"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Instagram size={20} />
+              @Firouzeh_pedicure_nail
+            </motion.a>
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            className="relative max-w-4xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 text-white hover:text-rose-400 text-4xl font-bold transition-colors"
+            >
+              ✕
+            </button>
+            <div className="relative w-full h-[80vh]">
+              <Image
+                src={selectedImage}
+                alt="نمایش بزرگ نمونه کار"
+                fill
+                className="object-contain rounded-lg"
+                sizes="90vw"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Services Section */}
       <section
@@ -293,28 +344,85 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-playfair font-bold mb-6 bg-linear-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-playfair font-bold mb-12 text-center bg-linear-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
               درباره من
             </h2>
-            <p className="text-lg text-gray-700 mb-6 font-inter leading-relaxed">
-              سلام، من{" "}
-              <span className="font-bold text-rose-600">فیروزه صفاهانی</span>،
-              یک هنرمند ناخن با اشتیاق و سال‌ها تجربه در خلق طراحی‌های زیبا و
-              منحصر به فرد ناخن هستم. هر مشتری شایسته احساس اعتماد به نفس و
-              زیبایی است و من به ارائه نتایج استثنایی با دقت و توجه به جزئیات
-              افتخار می‌کنم.
-            </p>
-            <p className="text-lg text-gray-700 font-inter leading-relaxed">
-              از ظرافت کلاسیک تا بیانیه‌های هنری جسورانه، من با هر مشتری به صورت
-              نزدیک همکاری می‌کنم تا دیدگاه‌شان را به واقعیت تبدیل کنم. بیایید
-              با هم چیزی زیبا بسازیم!
-            </p>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Profile Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="flex justify-center"
+              >
+                <div className="relative w-80 h-80 rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/firouzeh-safahani.jpg"
+                    alt="فیروزه صفاهانی"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </motion.div>
+
+              {/* Text Content */}
+              <div className="space-y-6">
+                <p className="text-lg text-gray-700 font-inter leading-relaxed">
+                  سلام، من{" "}
+                  <span className="font-bold text-rose-600">
+                    فیروزه صفاهانی
+                  </span>
+                  ، یک هنرمند ناخن با اشتیاق و سال‌ها تجربه در خلق طراحی‌های
+                  زیبا و منحصر به فرد ناخن هستم. هر مشتری شایسته احساس اعتماد به
+                  نفس و زیبایی است و من به ارائه نتایج استثنایی با دقت و توجه به
+                  جزئیات افتخار می‌کنم.
+                </p>
+                <p className="text-lg text-gray-700 font-inter leading-relaxed">
+                  از ظرافت کلاسیک تا بیانیه‌های هنری جسورانه، من با هر مشتری به
+                  صورت نزدیک همکاری می‌کنم تا دیدگاه‌شان را به واقعیت تبدیل کنم.
+                </p>
+
+                {/* Credentials */}
+                <div className="bg-rose-50 rounded-xl p-6 space-y-4 mt-8">
+                  <div className="flex items-start gap-3">
+                    <Award
+                      className="text-rose-600 mt-1 shrink-0"
+                      size={24}
+                    />
+                    <div>
+                      <h3 className="font-bold text-gray-800 mb-1">
+                        مدرک فنی حرفه‌ای
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        دارای گواهینامه معتبر فنی و حرفه‌ای در زمینه ناخن
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <GraduationCap
+                      className="text-rose-600 mt-1 shrink-0"
+                      size={24}
+                    />
+                    <div>
+                      <h3 className="font-bold text-gray-800 mb-1">
+                        مهارت آموزش
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        آموزش تخصصی هنر ناخن و تکنیک‌های پیشرفته
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -339,7 +447,7 @@ export default function Home() {
             </p>
 
             <motion.a
-              href="https://instagram.com"
+              href="https://instagram.com/Firouzeh_pedicure_nail"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-white text-rose-600 px-10 py-5 rounded-full font-inter font-bold text-xl shadow-2xl"
@@ -370,7 +478,18 @@ export default function Home() {
       <footer className="bg-gray-900 text-white py-8 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <p className="font-playfair text-2xl mb-2">فیروزه صفاهانی</p>
-          <p className="text-gray-400 font-inter">هنرمند حرفه‌ای ناخن © ۱۴۰۴</p>
+          <p className="text-gray-400 font-inter mb-3">
+            هنرمند حرفه‌ای ناخن © ۱۴۰۴
+          </p>
+          <a
+            href="https://instagram.com/Firouzeh_pedicure_nail"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-rose-400 hover:text-rose-300 transition-colors"
+          >
+            <Instagram size={20} />
+            @Firouzeh_pedicure_nail
+          </a>
         </div>
       </footer>
     </div>
