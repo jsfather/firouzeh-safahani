@@ -68,10 +68,31 @@ export default function Home() {
     "photo_4_2025-11-07_00-13-50.jpg",
   ];
 
+  // Your pedicure images
+  const pedicureImages = [
+    "photo_1_2025-11-07_00-18-34.jpg",
+    "photo_2_2025-11-07_00-18-34.jpg",
+    "photo_3_2025-11-07_00-18-34.jpg",
+    "photo_4_2025-11-07_00-18-34.jpg",
+    "photo_5_2025-11-07_00-18-34.jpg",
+    "photo_6_2025-11-07_00-18-34.jpg",
+    "photo_7_2025-11-07_00-18-34.jpg",
+    "photo_8_2025-11-07_00-18-34.jpg",
+    "photo_9_2025-11-07_00-18-34.jpg",
+    "photo_10_2025-11-07_00-18-34.jpg",
+    "photo_11_2025-11-07_00-18-34.jpg",
+  ];
+
   const portfolio = nailImages.map((image, index) => ({
     id: index + 1,
     image: `/nails/${image}`,
     alt: `نمونه کار طراحی ناخن ${index + 1}`,
+  }));
+
+  const pedicurePortfolio = pedicureImages.map((image, index) => ({
+    id: index + 1,
+    image: `/pedicure/${image}`,
+    alt: `نمونه کار پدیکور ${index + 1}`,
   }));
 
   return (
@@ -254,6 +275,90 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 font-semibold"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Instagram size={20} />
+              @Firouzeh_pedicure_nail
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pedicure Section */}
+      <section
+        id="pedicure"
+        className="py-20 bg-linear-to-br from-purple-50 via-white to-rose-50"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="inline-block mb-4"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="text-6xl">🦶✨</span>
+            </motion.div>
+            <h2 className="text-5xl font-playfair font-bold mb-4 bg-linear-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
+              خدمات پدیکور حرفه‌ای
+            </h2>
+            <p className="text-xl text-gray-600 font-inter">
+              مراقبت تخصصی و زیبایی پاها با بهترین کیفیت
+            </p>
+          </motion.div>
+
+          {/* Pedicure Gallery Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {pedicurePortfolio.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="relative group cursor-pointer"
+                onClick={() => setSelectedImage(item.image)}
+              >
+                <div className="relative aspect-square rounded-xl overflow-hidden bg-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileHover={{ opacity: 1, scale: 1 }}
+                      className="text-white text-sm font-inter font-semibold bg-purple-500/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      مشاهده
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-gray-600 font-inter mb-4">
+              💜 نمونه کارهای بیشتر پدیکور در اینستاگرام
+            </p>
+            <motion.a
+              href="https://instagram.com/Firouzeh_pedicure_nail"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-semibold"
               whileHover={{ scale: 1.05 }}
             >
               <Instagram size={20} />
