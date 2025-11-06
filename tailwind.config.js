@@ -9,8 +9,10 @@ module.exports = {
     extend: {
       fontFamily: {
         vazirmatn: ["Vazirmatn", "sans-serif"],
-        playfair: ["Playfair Display", "serif"],
-        inter: ["Inter", "sans-serif"],
+        playfair: ["Vazirmatn", "serif"],
+        inter: ["Vazirmatn", "sans-serif"],
+        sans: ["Vazirmatn", "sans-serif"],
+        serif: ["Vazirmatn", "serif"],
       },
       backgroundImage: {
         "linear-to-br":

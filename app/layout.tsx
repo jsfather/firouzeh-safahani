@@ -6,6 +6,7 @@ const vazirmatn = Vazirmatn({
   subsets: ["arabic", "latin"],
   variable: "--font-vazirmatn",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${vazirmatn.variable} antialiased`}>{children}</body>
+      <body className={`${vazirmatn.className} antialiased font-vazirmatn`}>{children}</body>
     </html>
   );
 }
