@@ -8,6 +8,10 @@ import {
   Heart,
   Star,
   GraduationCap,
+  MapPin,
+  Phone,
+  Map,
+  Navigation,
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -717,13 +721,117 @@ export default function Home() {
             </motion.a>
 
             <motion.div
-              className="mt-12 text-white/80 font-inter"
+              className="mt-12 text-white/90 font-inter"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <p>📍 در قلب شهر واقع شده</p>
-              <p className="mt-2">📧 برای رزرو و سوالات با من تماس بگیرید</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-6xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-8">
+                  {/* Contact Info Section */}
+                  <div className="space-y-6">
+                    {/* Address */}
+                    <div className="text-right">
+                      <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <MapPin size={24} />
+                        آدرس سالن زیبایی
+                      </h3>
+                      <p className="text-rose-100 leading-relaxed mb-6 text-lg">
+                        گیلان، لنگرود، جاده لیلاکوه، ابتدای بلوار دهگان، روبروی
+                        مدرسه استعدادهای درخشان شهید بهشتی،جنب باغ تالار بید
+                        مجنون، سالن زیبایی درسا
+                      </p>
+                    </div>
+
+                    {/* Phone */}
+                    <div className="text-right">
+                      <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Phone size={24} />
+                        شماره تماس
+                      </h3>
+                      <div className="mb-6">
+                        <a
+                          href="tel:09372407436"
+                          className="text-3xl font-bold text-white hover:text-rose-200 transition-colors block mb-2"
+                        >
+                          ۰۹۳۷۲۴۰۷۴۳۶
+                        </a>
+                        <p className="text-rose-200 text-lg">
+                          برای رزرو نوبت تماس بگیرید
+                        </p>
+                      </div>
+
+                      {/* Contact Buttons */}
+                      <div className="flex flex-wrap gap-3 justify-end">
+                        <motion.a
+                          href="tel:09372407436"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Phone size={20} />
+                          تماس مستقیم
+                        </motion.a>
+
+                        <motion.a
+                          href="https://maps.app.goo.gl/xBWS6aTeAuQUmbCo9?g_st=ipc"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Navigation size={20} />
+                          مسیریابی
+                        </motion.a>
+                      </div>
+                    </div>
+
+                    {/* Instagram */}
+                    <div className="pt-6 border-t border-white/20 text-right">
+                      <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Star size={20} />
+                        دنبال کنید
+                      </h3>
+                      <motion.a
+                        href="https://instagram.com/Firouzeh_pedicure_nail"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Instagram size={20} />
+                        @Firouzeh_pedicure_nail
+                      </motion.a>
+                    </div>
+                  </div>
+
+                  {/* Map Section */}
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-2">
+                      <Map size={24} />
+                      موقعیت ما
+                    </h3>
+                    <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white/20">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.8498177473193!2d50.137363!3d37.1800399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8ac90061fb06e3%3A0x36844007e1cf44c9!2z2LPYp9mE2YYg2LLbjNio2KfbjNuMINiv2LHYs9in!5e0!3m2!1sen!2s!4v1762464518108!5m2!1sen!2s"
+                        width="100%"
+                        height="350"
+                        style={{ border: 0 }}
+                        allowFullScreen={true}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="rounded-lg"
+                      />
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <p className="text-rose-200 text-sm mt-3">
+                      کلیک کنید تا در برنامه نقشه باز شود
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
