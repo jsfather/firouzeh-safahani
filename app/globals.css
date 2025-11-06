@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -10,12 +10,20 @@ body {
   background: var(--background);
   color: var(--foreground);
   /* Use Vazirmatn for the whole application with safe fallbacks */
-  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+  font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
 }
 
 /* Ensure all headings and UI elements use the Persian font */
-h1,h2,h3,h4,h5,h6,button,input,textarea {
-  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+textarea {
+  font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
 }
 
 /* Smooth scrolling for anchor links */
@@ -25,8 +33,13 @@ html {
 
 /* Custom gradient animations */
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .animate-gradient {
